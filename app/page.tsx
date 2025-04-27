@@ -11,6 +11,12 @@ import { Progress } from "@/components/ui/progress"
 import { useRouter } from 'next/navigation'
 import Image from "next/image";
 
+interface EmailFormData {
+    subject: string;
+    html: string;
+    emails: string;
+}
+
 export default function SendEmail() {
     const { register, handleSubmit, reset } = useForm()
     const [status, setStatus] = useState<string | null>(null)
@@ -18,7 +24,7 @@ export default function SendEmail() {
     const [currentCount, setCurrentCount] = useState<number>(0)
     const [totalCount, setTotalCount] = useState<number>(0)
     const [email, setEmail] = useState<string | null>(null)
-    const [from, setFrom] = useState<string | null>(null)
+    // const [from, setFrom] = useState<string | null>(null)
     const [password, setPassword] = useState<string | null>(null)
     const router = useRouter()
 
@@ -30,12 +36,12 @@ export default function SendEmail() {
             router.push('/login')
         } else {
             setEmail(storedEmail)
-            setFrom(storedEmail)
+            // setFrom(storedEmail)
             setPassword(storedPassword)
         }
     }, [router])
 
-    const onSubmit = async (data: any) => {
+    const onSubmit = async (data: EmailFormData) => {
         setProgress(0)
         setStatus(null)
         setCurrentCount(0)
