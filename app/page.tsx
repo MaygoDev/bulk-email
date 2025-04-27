@@ -18,7 +18,7 @@ interface EmailFormData {
 }
 
 export default function SendEmail() {
-    const { register, handleSubmit, reset } = useForm()
+    const { register, handleSubmit, reset } = useForm<EmailFormData>()
     const [status, setStatus] = useState<string | null>(null)
     const [progress, setProgress] = useState<number>(0)
     const [currentCount, setCurrentCount] = useState<number>(0)
