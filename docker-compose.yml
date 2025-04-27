@@ -1,0 +1,8 @@
+services:
+  app:
+    build:
+      context: .
+    ports:
+      - "8080:3000"
+    environment:
+      - SMTP_HOST=mail.exemple
